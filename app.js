@@ -11,11 +11,9 @@ console.log(`Writing file to ${blobFileName}...`);
 fs.writeFileSync(blobFileName, originalBitmap);
 
 console.log(`Reading ${blobFileName}...`);
-const blobBitmap = fs.readFileSync(blobFileName).toString('binary');
+const blobBitmap = fs.readFileSync(blobFileName);
 
 console.log(`Copying file to ${newFilename}...`);
-// fs.writeFileSync(newFilename, blobBitmap, { encoding: 'base64' });
+fs.writeFileSync(newFilename, blobBitmap, { encoding: 'base64' });
 
-fs.writeFile(newFilename, blobBitmap, 'binary', function(err) {
-  console.log('File created');
-});
+console.log('Done')
